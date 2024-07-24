@@ -11,7 +11,7 @@ import {
 } from "./models/astronauts.js";
 
 const app = express();
-
+const port = 8080;
 app.use(express.json());
 
 /* 
@@ -29,6 +29,18 @@ res.json({
 
 /* Write a request handler to return the correct response when a `GET` request is received to `/astronauts`. Choose the appropriate 
 function from the imported functions at the top of the `app.js` to get your data. */
+
+app.get("/astronauts", (req, res) => {
+  res.json({
+    "success": true,
+    "payload": getAstronauts()
+  })
+})
+
+app.listen (port, () => {
+  console.log(`Server listening on ${port}`);
+});
+
 
 // Task 2
 
